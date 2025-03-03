@@ -12,7 +12,7 @@ const ItemCard = ({ item }) => {
   const getStatusText = () => {
     if (item.launch_success === true) return "Success";
     if (item.launch_success === false) return "Failed";
-    return "Upcoming"; // If null, display upcoming
+    return "Upcoming";
   };
 
   return (
@@ -24,43 +24,41 @@ const ItemCard = ({ item }) => {
         </span>
       </h2>
 
-      {showDetails && (
-        <div className="launch__details">
-          <p>
-            {new Date().getFullYear() - item.launch_year} years ago
-            {item.links.article_link && (
-              <span>
-                |{" "}
-                <a
-                  className="link"
-                  href={item.links.article_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Article
-                </a>{" "}
-              </span>
-            )}
-            {item.links.video_link && (
-              <span>
-                |{" "}
-                <a
-                  href={item.links.video_link}
-                  target="_blank"
-                  className="link"
-                  rel="noopener noreferrer"
-                >
-                  Video
-                </a>
-              </span>
-            )}
-          </p>
-          <div className="flex">
-            <div className="media"></div>
-            <div>{item.details || "No details available"}</div>
-          </div>
+      <div className={`launch__details ${showDetails ? "show" : "hide"}`}>
+        <p>
+          {new Date().getFullYear() - item.launch_year} years ago
+          {item.links.article_link && (
+            <span>
+              |{" "}
+              <a
+                className="link"
+                href={item.links.article_link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Article
+              </a>{" "}
+            </span>
+          )}
+          {item.links.video_link && (
+            <span>
+              |{" "}
+              <a
+                href={item.links.video_link}
+                target="_blank"
+                className="link"
+                rel="noopener noreferrer"
+              >
+                Video
+              </a>
+            </span>
+          )}
+        </p>
+        <div className="flex">
+          <div className="media"></div>
+          <div>{item.details || "No details available"}</div>
         </div>
-      )}
+      </div>
       <button
         className="btn btn--primary"
         onClick={() => setShowDetails(!showDetails)}

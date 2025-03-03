@@ -232,3 +232,21 @@ img {
   flex-direction: row;
   align-items: center;
 }
+
+/////////////////////// ANIMATION /////////////////////
+.launch__details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.launch__details.show {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.launch__details.hide {
+  max-height: 0;
+  opacity: 0;
+}
